@@ -1,0 +1,14 @@
+<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+    <!--begin::Number-->
+    <div class="d-flex align-items-center">
+        <span class="svg-icon svg-icon-3 svg-icon-success me-2">
+            ...
+        </span>
+        <div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="4500" data-kt-countup-prefix="$">0</div>
+    </div>
+    <!--end::Number-->
+
+    <!--begin::Label-->
+    <div class="fw-bold fs-6 ">Earnings</div>
+    <!--end::Label-->
+</div>

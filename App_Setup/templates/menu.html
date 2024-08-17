@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+	
+		<!--begin::Navbar-->
+		
+		<!--end::Navbar-->
+		<!--begin::Toolbar-->
+		<div class="d-flex flex-wrap flex-stack pb-7">
+			<!--begin::Title-->
+			<div class="d-flex flex-wrap align-items-center my-1">
+				<h3 class="fw-bolder me-5 my-1">Productos ({{cantidad_productos}})</h3>
+				<!--begin::Search-->
+				<div class="d-flex align-items-center position-relative my-1">
+					<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+					<span class="svg-icon svg-icon-1 position-absolute ms-4">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+							<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor" />
+							<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor" />
+						</svg>
+					</span>
+					<!--end::Svg Icon-->
+					<input type="text" data-kt-ecommerce-product-filter="search" class="form-control border-body w-250px ps-14" placeholder="Search Product" />
+				</div>
+				<!--end::Search-->
+			</div>
+			<!--end::Title-->
+			<!--begin::Controls-->
+			<div class="d-flex flex-wrap my-1">
+				<!--begin::Tab nav-->
+				<ul class="nav nav-pills me-6 mb-2 mb-sm-0">
+					<li class="nav-item m-0">
+						<a class="btn btn-sm btn-icon btn-light btn-color-muted btn-active-primary me-3 active" data-bs-toggle="tab" href="#kt_project_targets_card_pane">
+							<span class="svg-icon svg-icon-2">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+									<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+										<rect x="5" y="5" width="5" height="5" rx="1" fill="currentColor" />
+										<rect x="14" y="5" width="5" height="5" rx="1" fill="currentColor" opacity="0.3" />
+										<rect x="5" y="14" width="5" height="5" rx="1" fill="currentColor" opacity="0.3" />
+										<rect x="14" y="14" width="5" height="5" rx="1" fill="currentColor" opacity="0.3" />
+									</g>
+								</svg>
+							</span>
+						</a>
+					</li>
+					<li class="nav-item m-0">
+						<a class="btn btn-sm btn-icon btn-light btn-color-muted btn-active-primary" data-bs-toggle="tab" href="#kt_project_targets_table_pane">
+							<span class="svg-icon svg-icon-2">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+									<path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z" fill="currentColor" />
+									<path opacity="0.3" d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z" fill="currentColor" />
+								</svg>
+							</span>
+						</a>
+					</li>
+				</ul>
+				<!--end::Tab nav-->
+				<!--begin::Actions-->
+				
+			</div>
+			<!--end::Controls-->
+		</div>
+		<!--end::Toolbar-->
+		<!--begin::Tab Content-->
+		<div class="tab-content">
+			<!--begin::Tab pane-->
+			
+			<div class="tab-pane fade show active" id="kt_project_targets_card_pane">
+				<!--begin::Row-->
+				<div class="row g-9">
+					{% for p in productos %} 
+						<div class="col-md-3">
+							<div class="card mb-6 mb-xl-9" data-bs-toggle="modal" data-bs-target="#productoModal" data-nombre="{{ p.nombre }}" data-categoria="{{ p.categoria }}" data-precio="{{ p.precio }}" data-disponibilidad="{{ p.disponibilidad }}" data-imagen="{{ p.imagen.url }}" data-descuento="{{ p.descuento }}" data-descripcion="{{ p.descripcion }}" data-preciodescuento="{{ p.preciodescuento }}">
+								<div class="card-body">
+									<div class="d-flex flex-stack mb-3">
+										{% if p.disponibilidad %}
+											<div class="badge badge-success">Disponible</div>
+										{% else %}
+											<div class="badge badge-danger">No Disponible</div>
+										{% endif %}
+										<div>
+													EO
+										</div>
+									</div>
+									<div class="mb-2">
+										<a href="#" class="fs-4 fw-bolder mb-1 text-gray-900 "  >{{p.nombre}}</a>
+									</div>
+									<div class="fs-6 fw-bold text-gray-600 mb-5">{{p.descripcion}}
+
+									</div>
+									<div class="d-flex flex-stack flex-wrapr">
+											<!--begin::Users-->
+										<div class="symbol symbol-65px symbol-circle mb-5" >
+											<img src="{{p.imagen.url}}" style="width:100px; height:100px" alt="image" />
+										</div>
+										<div class="d-flex my-1">
+											{% if p.descuento %}
+												<div class="border border-dashed border-gray-300 rounded py-4 px-8 symbol">
+													<span class="symbol-badge badge badge-circle bg-danger start-100" style="width:2.7rem;height:2.7rem">{{p.descuento}} %</span>
+													<!--begin::Svg Icon | path: icons/duotune/communication/com008.svg-->
+													<i class="bi bi-currency-dollar fs-1 text-success"></i>
+													<!--end::Svg Icon-->
+													<span class="ms-1 fs-2 fw-bolder text-dark">{{p.preciodescuento}}</span>
+												</div>
+											{% else %}
+												<div class="border border-dashed border-gray-300 rounded py-4 px-8">
+													<!--begin::Svg Icon | path: icons/duotune/communication/com008.svg-->
+													<i class="bi bi-currency-dollar fs-1 text-success"></i>
+													<!--end::Svg Icon-->
+													<span class="ms-1 fs-2 fw-bolder text-dark">{{p.precio}}</span>
+												</div>
+											{% endif %}
+												
+										</div>
+											<!--end::Stats-->
+									</div>
+										<!--end::Footer-->
+								</div>
+									<!--end::Card body-->
+							</div>
+						</div>
+						
+					{% endfor %}
+		
+				</div>
+					<!--end::Card body-->
+			</div>
+		
+			
+			<div class="tab-pane fade" id="kt_project_targets_table_pane">
+				<!--begin::Card-->
+				<div class="card card-flush">
+					<!--begin::Card body-->
+					<div class="card-body pt-0">
+						<!--begin::Table container-->
+						<div class="table-responsive">
+							<!--begin::Table-->
+							<table id="kt_project_users_table" class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bolder">
+								<!--begin::Head-->
+								<thead class="fs-7 text-gray-400 text-uppercase">
+									<tr>
+										<th class="min-w-150px">Producto</th>
+										<th class="min-w-50px">Precio</th>
+										<th class="min-w-50px">Descuento</th>
+										<th class="min-w-90px">Precio con Descuento</th>
+										<th class="min-w-90px">Disponibilidad</th>
+										
+									</tr>
+								</thead>
+								<!--end::Head-->
+								<!--begin::Body-->
+								<tbody class="fs-6">
+									
+									{% for p in productos %}
+									<tr>
+										<td>
+											<div class="d-flex align-items-center" >
+												<!--begin::Thumbnail-->
+												<a href="{{ p.imagen.url }}" class="symbol symbol-50px">
+													<span class="symbol-label" style="background-image: url('{{ p.imagen.url }}');"></span>
+												</a>
+												<!--end::Thumbnail-->
+												<div class="ms-5" data-bs-toggle="modal" data-bs-target="#productoModal" data-nombre="{{ p.nombre }}" data-categoria="{{ p.categoria }}" data-precio="{{ p.precio }}" data-disponibilidad="{{ p.disponibilidad }}" data-imagen="{{ p.imagen.url }}" data-descuento="{{ p.descuento }}" data-descripcion="{{ p.descripcion }}" data-preciodescuento="{{ p.preciodescuento }}">
+													<!--begin::Title-->
+													<p class="text-gray-800 fs-5 fw-bolder" data-kt-ecommerce-product-filter="product_name">{{p.nombre}}</p>
+													<!--end::Title-->
+												</div>
+											</div>
+										</td>
+										<td>{{p.precio}}</td>
+										<td>
+											{% if p.descuento == None %}
+												0
+											{% else %}
+											{{p.descuento}}
+											{% endif %}
+											
+										</td>
+										{% if p.descuento == None %}
+											<td>No tiene descuento.</td>
+										{% else %}
+										
+										<td>{{p.preciodescuento}}</td>
+										{% endif %}
+										
+										<td>
+											{% if p.disponibilidad %}
+												<span class="badge badge-light-success fw-bolder px-4 py-3">Disponible</span>
+											{% else %}
+												<span class="badge badge-light-danger fw-bolder px-4 py-3">No Disponible</span>
+											{% endif %}
+											
+										</td>
+										
+									</tr>
+									{% endfor %}
+										
+									
+									
+								</tbody>
+								<!--end::Body-->
+							</table>
+							<!--end::Table-->
+						</div>
+						<!--end::Table container-->
+					</div>
+					<!--end::Card body-->
+				</div>
+				<!--end::Card-->
+			</div>
+			<!--end::Tab pane-->
+		</div>
+		
+
+<br>
+<br>
+
+{% include 'modals.html' %}
+
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static 'js/targets.js' %} "></script>
+<script src="{% static 'js/widgets.js' %} "></script>
+<script src="{% static 'js/widgetsbundle.js' %} "></script>
+{% endblock %}			

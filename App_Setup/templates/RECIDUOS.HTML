@@ -1,0 +1,273 @@
+<div class="row g-6 g-xl-9">
+    <!--begin::Col-->
+    {% for p in productos %}
+    <div class="col-md-6 col-xxl-4">
+        <!--begin::Card-->
+        <div class="card">
+            <!--begin::Card body-->
+            <div class="card-body d-flex flex-center flex-column pt-12 p-9">
+                <!--begin::Avatar-->
+                <div class="symbol symbol-65px symbol-circle mb-5">
+                    <img src="{{p.imagen.url}}" alt="image" />
+                    <div class="bg-success position-absolute border border-4 border-white h-15px w-15px rounded-circle translate-middle start-100 top-100 ms-n3 mt-n3"></div>
+                </div>
+                <!--end::Avatar-->
+                <!--begin::Name-->
+                <a href="#" class="fs-4 text-gray-800 text-hover-primary fw-bolder mb-0">Darian garc </a>
+                <!--end::Name-->
+                <!--begin::Position-->
+                <div class="fw-bold text-gray-400 mb-6">Art Directorwfwrffwfwfwffwfwefwfwefwefwefwefwefwfwwfwfwfwfwfwfwefwef at Novica Co.</div>
+                <!--end::Position-->
+                <!--begin::Info-->
+                <div class="d-flex flex-center flex-wrap">
+                    <!--begin::Stats-->
+                    <div class="border border-gray-300 border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3">
+                        <div class="fs-6 fw-bolder text-gray-700">$14,560</div>
+                        <div class="fw-bold text-gray-400">Earnings</div>
+                    </div>
+                    <!--end::Stats-->
+                    <!--begin::Stats-->
+                    <div class="border border-gray-300 border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3">
+                        <div class="fs-6 fw-bolder text-gray-700">23</div>
+                        <div class="fw-bold text-gray-400">Tasks</div>
+                    </div>
+                    <!--end::Stats-->
+                    <!--begin::Stats-->
+                    <div class="border border-gray-300 border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3">
+                        <div class="fs-6 fw-bolder text-gray-700">$236,400</div>
+                        <div class="fw-bold text-gray-400">Sales</div>
+                    </div>
+                    <!--end::Stats-->
+                </div>
+                <!--end::Info-->
+            </div>
+            <!--end::Card body-->
+        </div>
+        <!--end::Card-->
+    </div>
+    {% endfor %}
+
+
+    {% for p in productos %}
+    <div class="col-md-6 col-xxl-4">
+        
+        <!--begin::Card-->
+        <a href="#" class="fs-4 text-gray-800 fw-bolder mb-0" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">  
+        <div class="card">
+            
+            <!--begin::Card body-->
+            <div class="card-body d-flex flex-center flex-column pt-12 p-9">
+                <!--begin::Avatar-->
+                <div class="symbol symbol-65px symbol-circle mb-5" >
+                    <img src="{{p.imagen.url}}" style="width:100px; height:100px" alt="image" />
+                    
+                </div>
+                <!--end::Avatar-->
+                <!--begin::Name-->
+                <p  class="fs-4 text-gray-800  fw-bolder mb-0">{{p.nombre}} </p>
+                <!--end::Name-->
+                <!--begin::Position-->
+                <div class="fw-bold text-gray-400 mb-6" style="text-align: center;">{{p.descripcion}}</div>
+                <!--end::Position-->
+                <!--begin::Info-->
+                <div class="d-flex flex-center flex-wrap">
+                    <!--begin::Stats-->
+                    {% if p.descuento %}
+                    
+                    <div class="border border-gray-300 border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3 symbol ">
+                        <span class="symbol-badge badge badge-circle bg-danger start-100" style="width:2.7rem;height:2.7rem">{{p.descuento}}%</span>
+                        <div class="fs-6 fw-bolder text-gray-700">$ {{p.preciodescuento}}</div>
+                        <div class="fw-bold text-gray-400">Descuento</div>
+                    </div>
+                    
+                    {% else %}
+                    <div class="border border-gray-300 border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3">
+                        <div class="fs-6 fw-bolder text-gray-700"> $ {{p.precio}}</div>
+                        <div class="fw-bold text-gray-400">Precio</div>
+                    </div>
+                    {% endif %}
+                    
+                    <!--end::Stats-->
+                    <!--begin::Stats-->
+                    
+                    
+                    <!--end::Stats-->
+                    <!--begin::Stats-->
+                    
+                    <!--end::Stats-->
+                </div>
+                <!--end::Info-->
+            </div>
+            <!--end::Card body-->
+        </div>
+    </a>
+    {% endfor %}
+        
+    </div>
+    <!--end::Col-->
+    <!--begin::Col-->
+    
+    <!--end::Col-->
+</div>
+<!--end::Row-->
+<!--begin::Pagination-->
+
+
+
+
+
+<div class="modal fade" id="productoModal" tabindex="-1" aria-labelledby="productoModalLabel" aria-hidden="true">
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered mw-900px">
+        <!--begin::Modal content-->
+        <div class="modal-content">
+            <!--begin::Modal header-->
+            <div class="modal-header">
+                <!--begin::Modal title-->
+                <h2 class="modal-title" >Detalles del Producto</h2>
+                
+                <!--end::Modal title-->
+                <!--begin::Close-->
+                <div class="btn btn-sm btn-icon btn-active-color-danger" data-bs-dismiss="modal">
+                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                    <span class="svg-icon svg-icon-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor" />
+                            <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor" />
+                        </svg>
+                    </span>
+                    <!--end::Svg Icon-->
+                </div>
+                <!--end::Close-->
+            </div>
+            
+            <div class="post d-flex flex-column-fluid" id="kt_post">
+                <!--begin::Container-->
+                <div id="kt_content_container" class="container-xxl">
+                <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+                    <!--begin::Col-->
+                    <div class="col-xxl-12">
+                        <!--begin::Card widget 15-->
+                        <div class="card card-flush border-0 h-xl-100">
+                            <!--begin::Body-->
+                            <div class="card-body py-9">
+                                <!--begin::Row-->
+                                <div class="row gx-9 h-100">
+                                    <!--begin::Col-->
+                                    <div class="col-sm-6 mb-10 mb-sm-0">
+                                        <!--begin::Overlay-->
+                                        <a id="ImagenProducto" class="d-block overlay h-100" data-fslightbox="lightbox-hot-sales" href="{% static 'img/CubanFood.png' %}">
+                                            <!--begin::Image-->
+                                            <div id="modalProductoImagen" class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-300px h-100" style="background-image:url('{% static 'img/CubanFood.png' %}')"></div>
+                                            <!--end::Image-->
+                                            <!--begin::Action-->
+                                            <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                <i class="bi bi-eye-fill fs-2x text-white"></i>
+                                            </div>
+                                            <!--end::Action-->
+                                        </a>
+                                        <div class="d-flex align-items-end flex-stack mb-1">
+                                            <!--begin::Title-->
+                                            <div class="text-start">
+                                                <br>
+                                                
+                                                <span id="modalProductoNombre" class="fw-bolder text-warning fs-4 d-block"></span>
+                                                
+                                            </div>
+                                            <!--end::Title-->
+                                            <!--begin::Total-->
+                                            <span id="modalProductoPrecio" class="text-dark  fw-bolder fs-2" ><strong>$ </strong></span>
+                                            <!--end::Total-->
+                                        </div>
+                                        <!--end::Overlay-->
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-sm-6">
+                                        <!--begin::Wrapper-->
+                                        <div class="d-flex flex-column h-100">
+                                            <!--begin::Header-->
+                                            <div class="mb-7">
+                                                <!--begin::Title-->
+                                                <div class="mb-6">
+                                                    
+                                                    <p id="modalProductoCategoria" class="text-gray-800  fs-1 fw-bolder">Categoria</p>
+                                                    
+                                                </div>
+                                                <!--end::Title-->
+                                                <!--begin::Items-->
+                                                <div class="d-flex align-items-center flex-wrap d-grid gap-2">
+                                                    <!--begin::Item-->
+                                                    <div class="d-flex align-items-center me-5 me-xl-13">
+                                                        
+                                                        <!--begin::Info-->
+                                                        <div class="m-0">
+                                                            <div id="modalProductoDisponibilidad"  class="badge badge-light-success">Disponible</div>
+                                                            
+                                                        </div>
+                                                        <!--end::Info-->
+                                                    </div>
+                                                    <!--end::Item-->
+                                                    <!--begin::Item-->
+                                                    <div class="d-flex align-items-center">
+                                                        <!--begin::Symbol-->
+                                                        <div class="symbol symbol-30px symbol-circle me-3">
+                                                            <span class="symbol-label bg-success">
+                                                                <!--begin::Svg Icon | path: icons/duotune/abstract/abs042.svg-->
+                                                                <span class="svg-icon svg-icon-5 svg-icon-white">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                        <path d="M18 21.6C16.6 20.4 9.1 20.3 6.3 21.2C5.7 21.4 5.1 21.2 4.7 20.8L2 18C4.2 15.8 10.8 15.1 15.8 15.8C16.2 18.3 17 20.5 18 21.6ZM18.8 2.8C18.4 2.4 17.8 2.20001 17.2 2.40001C14.4 3.30001 6.9 3.2 5.5 2C6.8 3.3 7.4 5.5 7.7 7.7C9 7.9 10.3 8 11.7 8C15.8 8 19.8 7.2 21.5 5.5L18.8 2.8Z" fill="currentColor" />
+                                                                        <path opacity="0.3" d="M21.2 17.3C21.4 17.9 21.2 18.5 20.8 18.9L18 21.6C15.8 19.4 15.1 12.8 15.8 7.8C18.3 7.4 20.4 6.70001 21.5 5.60001C20.4 7.00001 20.2 14.5 21.2 17.3ZM8 11.7C8 9 7.7 4.2 5.5 2L2.8 4.8C2.4 5.2 2.2 5.80001 2.4 6.40001C2.7 7.40001 3.00001 9.2 3.10001 11.7C3.10001 15.5 2.40001 17.6 2.10001 18C3.20001 16.9 5.3 16.2 7.8 15.8C8 14.2 8 12.7 8 11.7Z" fill="currentColor" />
+                                                                    </svg>
+                                                                </span>
+                                                                <!--end::Svg Icon-->
+                                                            </span>
+                                                        </div>
+                                                        <!--end::Symbol-->
+                                                        <!--begin::Info-->
+                                                        <div class="m-0">
+                                                            <span class="fw-bold text-gray-400 d-block fs-8">Descuento</span>
+                                                            <p  id="modalProductoDescuento" class="fw-bolder text-gray-800 text-hover-danger fs-7">%</p>
+                                                        </div>
+                                                        <!--end::Info-->
+                                                    </div>
+                                                    <!--end::Item-->
+                                                </div>
+                                                <!--end::Items-->
+                                            </div>
+                                            <!--end::Header-->
+                                            <!--begin::Body-->
+                                            <div class="d-flex flex-column border border-1 border-gray-300 text-center pt-5 pb-7 mb-8 card-rounded">
+                                                <!--<span class="fw-bold text-gray-600 fs-7 pb-1">Last Bid</span>
+                                                <span class="fw-bolder text-gray-800 fs-2hx lh-1 pb-1">2.48 ETH</span>
+                                                <span class="fw-bolder text-gray-600 fs-4 pb-5">$6,047.84</span>
+                                                <span class="fw-bold text-gray-600 fs-7 pb-1">Ending in</span>-->
+                                                <span id="modalProductoDescripcion" class="fw-bold text-gray-600 fs-7 pb-1" style="text-align: justify; padding: 10px"></span>
+                                                <span class="fw-bolder text-gray-800 fs-3"></span>
+                                            </div>
+                                            <!--end::Body-->
+                                            
+                                        </div>
+                                        <!--end::Wrapper-->
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Row-->
+                            </div>
+                            <!--end::Body-->
+                        </div>
+                        <!--end::Card widget 15-->
+                    </div>
+                    <!--end::Col-->
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+            <!--end::Modal body-->
+        </div>
+        <!--end::Modal content-->
+    </div>
+    <!--end::Modal dialog-->
+</div>
